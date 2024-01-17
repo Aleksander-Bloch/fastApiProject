@@ -50,7 +50,6 @@ def create_elective_request_for_student(
 @app.get("/assign_electives/{index}", response_model=list[schemas.ElectiveRequest])
 def assign_electives(index: int, gpa: float, db: Session = Depends(get_db)):
     elective_requests = crud.get_elective_requests_by_student_index(db=db, student_index=index)
-    print(elective_requests)
     if gpa < 4:
         print("Your gpa is too low to assign any electives. Good luck next semester!")
         return []
